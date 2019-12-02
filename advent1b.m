@@ -2,13 +2,13 @@ format longG;
 masses = []; 
 sum = 0;
 for i = 1 : length(masses)
-    sum = sum + recursion(masses(i))
+    sum = sum + recursion(masses(i));
 end
 
 display(additive_fuel);
 
 function out = recursion(mass)
-    fuel = floor((mass / 3) - 2)
+    fuel = floor((mass / 3) - 2);
     if fuel >= 0
         out = fuel + recursion(fuel);
     else
