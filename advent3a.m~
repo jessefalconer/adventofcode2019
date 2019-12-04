@@ -10,16 +10,15 @@ Ay = A(:,2);
 B = matricize(wire2);
 Bx = B(:,1);
 By = B(:,2);
-C = [A;B];
 
-major = max(max(C)) + 5;
-minor = min(min(C)) - 5;
+major = max(max(A,B)) + 5;
+minor = min(min(A,B)) - 5;
 
 plot(Ax, Ay, '-x');
 hold on;
 plot(Bx, By, '-*');
 hold off;
-axis([minor, major, minor, major]);
+axis([minor{}1, major, minor, major]);
 grid on;
 
 function out = matricize(wire)
