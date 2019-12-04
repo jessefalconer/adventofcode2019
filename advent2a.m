@@ -6,11 +6,11 @@ function out = loop(starting, integers)
         if integers(i) == 1
             integers(i+3) = sum(integers(integers(i+1)), integers(integers(i+2)));
             loop(i+4, integers);
-            break
+            break;
         elseif integers(i) == 2
             integers(i+3) = product(integers(integers(i+1)), integers(integers(i+2)));
             loop(i+4, integers);
-            break
+            break;
         elseif integers(i) == 99
             break;
         end
