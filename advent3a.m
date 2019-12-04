@@ -15,6 +15,15 @@ C = [A;B];
 major = max(max(C)) + 5;
 minor = min(min(C)) - 5;
 
+X = intersect(A,B, 'rows');
+X = X(any(X,2));
+X = abs(X);
+X = sum(X,2);
+
+lowest = min(X);
+
+display(lowest);
+
 plot(Ax, Ay, '-x');
 hold on;
 plot(Bx, By, '-*');
@@ -34,22 +43,23 @@ function out = matricize(wire)
     out = positions;
 end
 
+
 function out = vectorize(direction, scalar, lastPosition)
-    A = [];
+    X = zeros(str2num(scalar{1}),2);
     switch direction{1}
         case "U"
-            A = [0 str2num(scalar{1})];
+            X(:,2) = 1:str2num(scalar{1});
         case "R"
-            A = [str2num(scalar{1}) 0];
+            X(:,1) = 1:str2num(scalar{1});
         case "D"
-            number = -1 * str2num(scalar{1});
-            A = [0 number];
+            X(:,2) = 1:str2num(scalar{1});
+            X = X * -1;
         case "L"
-            number = -1 * str2num(scalar{1});
-            A = [number 0];
+            X(:,1) = 1:str2num(scalar{1});
+            X = X * -1;
         otherwise
             disp("Unknown");
     end
-    A = A + lastPosition;
-    out = A;
+    X = X + lastPosition;
+    out = X;
 end
