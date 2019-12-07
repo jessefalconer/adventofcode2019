@@ -1,19 +1,23 @@
-% integers = importdata("2a.csv");
-integers = [1,9,10,3,2,3,11,0,99,30,40,50];
-disp(advance(1, integers));
+format compact;
+% Test
+% A = [];
+A = importdata("2a.csv");
+A(2) = 12;
+A(3) = 2;
+n = 0;
 
-function out = advance(index, integers)
-    if integers(index) == 1
-        integers(index+3) = sum(integers(integers(index+1)+1), integers(integers(index+2)+1));
-        advance(index+4, integers);
-    elseif integers(index) == 2
-        integers(index+3) = product(integers(integers(index+1)+1), integers(integers(index+2)+1));
-        advance(index+4, integers);
-    elseif integers(index) == 99
-        return
+for i = 0 : floor(length(A) - 1 / 4)
+    j = (i * 4) + 1;
+    if A(j) == 1
+        A(A(j+3)+1) = sum(A(A(j+1)+1), A(A(j+2)+1));
+    elseif A(j) == 2
+        A(A(j+3)+1) = product(A(A(j+1)+1), A(A(j+2)+1));
+    elseif A(j) == 99
+        break;
     end
-out = integers;
 end
+
+disp(A);
 
 function out = sum(x,y)
     out = x + y;
