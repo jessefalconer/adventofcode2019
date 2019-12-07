@@ -16,13 +16,12 @@ major = max(max(C)) + 5;
 minor = min(min(C)) - 5;
 
 X = intersect(A,B, 'rows');
-X = X(any(X,2));
 X = abs(X);
 X = sum(X,2);
 
-lowest = min(X);
+lowest = min(X(X>0));
 
-display(lowest);
+disp(lowest);
 
 plot(Ax, Ay, '-x');
 hold on;
@@ -42,7 +41,6 @@ function out = matricize(wire)
     end
     out = positions;
 end
-
 
 function out = vectorize(direction, scalar, lastPosition)
     X = zeros(str2num(scalar{1}),2);
