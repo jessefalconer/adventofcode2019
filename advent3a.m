@@ -10,7 +10,7 @@ Ay = A(:,2);
 B = matricize(wire2);
 Bx = B(:,1);
 By = B(:,2);
-D = [A;B];
+C = [A;B];
 
 major = max(max(C)) + 5;
 minor = min(min(C)) - 5;
